@@ -148,6 +148,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
         {
             $params['active'] = '0';
         }
+        
+        if (isset($params['key']))
+        {
+            if (is_array($params['key']))
+            {
+                $params['key'] = implode('::', $params['key']);
+            }
+        }
 		
 		$function = 'Versioning';
 		
@@ -206,6 +214,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
             $params['active'] = '0';
         }
         
+        if (isset($params['key']))
+        {
+            if (is_array($params['key']))
+            {
+                $params['key'] = implode('::', $params['key']);
+            }
+        }
+        
         $param = array
         (
             'cols' => array
@@ -248,6 +264,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
         if (! isset($params['updated']) || $params['updated'] == '0000-00-00 00:00:00')
         {
             $params['updated'] = '0001-01-01 00:00:00';
+        }
+        
+        if (isset($params['key']))
+        {
+            if (is_array($params['key']))
+            {
+                $params['key'] = implode('::', $params['key']);
+            }
         }
         
         if (! isset($params['﻿versioning_id']))
@@ -372,6 +396,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
         {
             return false;
         }
+        
+        if (isset($params['key']))
+        {
+            if (is_array($params['key']))
+            {
+                $params['key'] = implode('::', $params['key']);
+            }
+        }
 		
 		$function = 'Versioning';
 		
@@ -395,6 +427,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
         {
             $params['updated'] = date('Y-m-d H:i:s', time());
         }
+        
+        if (isset($params['key']))
+        {
+            if (is_array($params['key']))
+            {
+                $params['key'] = implode('::', $params['key']);
+            }
+        }
 		
 		$function = 'Versioning';
 		
@@ -409,6 +449,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
      */
     public function getVersioning ($params = array(), $returnAsString = false)
     {
+        if (isset($params['key']))
+        {
+            if (is_array($params['key']))
+            {
+                $params['key'] = implode('::', $params['key']);
+            }
+        }
+        
 		$function = 'Versioning';
 		
 		return $this->_get($function, $params, $returnAsString);
@@ -421,6 +469,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
      */
     public function getVersioningList ($where = array())
     {
+        if (isset($params['key']))
+        {
+            if (is_array($params['key']))
+            {
+                $params['key'] = implode('::', $params['key']);
+            }
+        }
+        
 		$function = 'Versioning';
 		
 		return $this->_getList($function, $where);
