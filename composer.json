@@ -1,0 +1,71 @@
+{
+    "name":         "ehrlichandreas/ehrlichandreas1-versioncms",
+    "description":  "Freelance-Market small database based version saving cms",
+    "type":         "util",
+    "keywords": 
+    [
+    ],
+    "license":              "Unlicense",
+    "minimum-stability":    "dev",
+    "authors": 
+    [
+        {
+            "name":     "Andreas Ehrlich",
+            "email":    "ehrlich.andreas@googlemail.com"
+        }
+    ],
+    "autoload": 
+    {
+        "psr-0": 
+        {
+            "EhrlichAndreas":   "src/"
+        }
+    },
+    "repositories":
+    [
+        {
+            "type": "git",
+            "url": "https://github.com/ehrlichandreas/ehrlichandreas1-abstractcms.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/ehrlichandreas/ehrlichandreas1-db.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/ehrlichandreas/ehrlichandreas1-pdo.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/ehrlichandreas/ehrlichandreas1-util.git"
+        }
+    ],
+    "require": 
+    {
+        "php":                                          ">=5.1",
+
+        "xrstf/composer-php52": "1.*@dev",
+
+        "ehrlichandreas/ehrlichandreas1-abstractcms":   "dev-master",
+        
+        "ehrlichandreas/ehrlichandreas1-db":            "dev-master",
+        
+        "ehrlichandreas/ehrlichandreas1-pdo":           "dev-master",
+        
+        "ehrlichandreas/ehrlichandreas1-util":          "0.0.1.0"
+    },
+    "require-dev":
+    {
+    },
+    "scripts":
+    {
+        "post-install-cmd":
+        [
+            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+        ],
+        "post-update-cmd":
+        [
+            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+        ]
+    }
+}
