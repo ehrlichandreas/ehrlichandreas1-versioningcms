@@ -11,4 +11,3 @@ class EhrlichAndreas_VersioningCms_Exception extends EhrlichAndreas_AbstractCms_
 {
 }
 
-?>

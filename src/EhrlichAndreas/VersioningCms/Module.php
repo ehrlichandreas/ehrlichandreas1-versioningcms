@@ -531,5 +531,3 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
     
 }
 
-
-?>

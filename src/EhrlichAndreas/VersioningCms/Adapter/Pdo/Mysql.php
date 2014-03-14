@@ -124,4 +124,3 @@ class EhrlichAndreas_VersioningCms_Adapter_Pdo_Mysql extends EhrlichAndreas_Abst
 	}
 }
 
-?>
