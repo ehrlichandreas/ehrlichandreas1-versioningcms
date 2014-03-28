@@ -1,9 +1,4 @@
-<?php
-
-//require_once 'EhrlichAndreas/FM/FlCms/Exception.php';
-
-//require_once 'EhrlichAndreas/AbstractCms/Module.php';
-
+<?php 
 
 /**
  * Library base exception
@@ -72,10 +67,11 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
     {
         return array
 		(
-            '﻿versioning_id' => '﻿versioning_id',
+            'versioning_id' => 'versioning_id',
             'published'     => 'published',
             'updated'       => 'updated',
             'enabled'       => 'enabled',
+            'extern_id'     => 'extern_id',
             'key'           => 'key',
             'value'         => 'value',
             'diff'          => 'diff',
@@ -92,7 +88,7 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
     {
         return array
 		(
-			'﻿versioning_id' => '﻿versioning_id',
+			'versioning_id' => 'versioning_id',
 		);
     }
 
@@ -122,6 +118,11 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
         if (! isset($params['enabled']))
         {
             $params['enabled'] = '1';
+        }
+        
+        if (! isset($params['extern_id']))
+        {
+            $params['extern_id'] = '';
         }
         
         if (! isset($params['key']))
@@ -189,6 +190,11 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
             $params['enabled'] = '1';
         }
         
+        if (! isset($params['extern_id']))
+        {
+            $params['extern_id'] = '';
+        }
+        
         if (! isset($params['key']))
         {
             $params['key'] = '';
@@ -214,6 +220,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
             $params['active'] = '0';
         }
         
+        if (isset($params['extern_id']))
+        {
+            if (is_array($params['extern_id']))
+            {
+                $params['extern_id'] = implode('::', $params['extern_id']);
+            }
+        }
+        
         if (isset($params['key']))
         {
             if (is_array($params['key']))
@@ -230,6 +244,7 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
             ),
             'where' => array
             (
+                'extern_id' => $params['extern_id'],
                 'key'       => $params['key'],
                 'enabled'   => '1',
             ),
@@ -266,6 +281,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
             $params['updated'] = '0001-01-01 00:00:00';
         }
         
+        if (isset($params['extern_id']))
+        {
+            if (is_array($params['extern_id']))
+            {
+                $params['extern_id'] = implode('::', $params['extern_id']);
+            }
+        }
+        
         if (isset($params['key']))
         {
             if (is_array($params['key']))
@@ -274,9 +297,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
             }
         }
         
-        if (! isset($params['﻿versioning_id']))
+        if (! isset($params['versioning_id']))
         {
             if (! isset($params['key']))
+            {
+                return false;
+            }
+            
+            if (! isset($params['extern_id']))
             {
                 return false;
             }
@@ -291,6 +319,7 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
                     ),
                     'where' => array
                     (
+                        'extern_id' => $params['extern_id'],
                         'key'       => $params['key'],
                         'enabled'   => '1',
                     ),
@@ -313,6 +342,7 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
                 'active'    => '0',
                 'where'     => array
                 (
+                    'extern_id' => $params['extern_id'],
                     'key'       => $params['key'],
                     'enabled'   => '1',
                 ),
@@ -325,6 +355,7 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
                 'active'    => '1',
                 'where'     => array
                 (
+                    'extern_id' => $params['extern_id'],
                     'key'       => $params['key'],
                     'version'   => $params['version'],
                     'enabled'   => '1',
@@ -339,11 +370,12 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
             (
                 'cols' => array
                 (
-                    'key'   => 'key',
+                    'extern_id' => 'extern_id',
+                    'key'       => 'key',
                 ),
                 'where' => array
                 (
-                    '﻿versioning_id' => $params['﻿versioning_id'],
+                    'versioning_id' => $params['versioning_id'],
                 ),
             );
 
@@ -355,6 +387,7 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
             }
             else
             {
+                $params['extern_id'] = $rowset[0]['extern_id'];
                 $params['key'] = $rowset[0]['key'];
             }
             
@@ -363,6 +396,7 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
                 'active'    => '0',
                 'where'     => array
                 (
+                    'extern_id' => $params['extern_id'],
                     'key'       => $params['key'],
                     'enabled'   => '1',
                 ),
@@ -375,7 +409,7 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
                 'active'    => '1',
                 'where'     => array
                 (
-                    '﻿versioning_id' => $params['﻿versioning_id'],
+                    'versioning_id' => $params['versioning_id'],
                     'enabled'       => '1',
                 ),
             );
@@ -395,6 +429,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
         if (count($params) == 0)
         {
             return false;
+        }
+        
+        if (isset($params['extern_id']))
+        {
+            if (is_array($params['extern_id']))
+            {
+                $params['extern_id'] = implode('::', $params['extern_id']);
+            }
         }
         
         if (isset($params['key']))
@@ -428,6 +470,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
             $params['updated'] = date('Y-m-d H:i:s', time());
         }
         
+        if (isset($params['extern_id']))
+        {
+            if (is_array($params['extern_id']))
+            {
+                $params['extern_id'] = implode('::', $params['extern_id']);
+            }
+        }
+        
         if (isset($params['key']))
         {
             if (is_array($params['key']))
@@ -449,6 +499,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
      */
     public function getVersioning ($params = array(), $returnAsString = false)
     {
+        if (isset($params['extern_id']))
+        {
+            if (is_array($params['extern_id']))
+            {
+                $params['extern_id'] = implode('::', $params['extern_id']);
+            }
+        }
+        
         if (isset($params['key']))
         {
             if (is_array($params['key']))
@@ -469,11 +527,19 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
      */
     public function getVersioningList ($where = array())
     {
-        if (isset($params['key']))
+        if (isset($where['extern_id']))
         {
-            if (is_array($params['key']))
+            if (is_array($where['extern_id']))
             {
-                $params['key'] = implode('::', $params['key']);
+                $where['extern_id'] = implode('::', $where['extern_id']);
+            }
+        }
+        
+        if (isset($where['key']))
+        {
+            if (is_array($where['key']))
+            {
+                $where['key'] = implode('::', $where['key']);
             }
         }
         

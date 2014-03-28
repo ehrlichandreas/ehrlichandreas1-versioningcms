@@ -1,7 +1,5 @@
 <?php 
 
-//require_once 'EhrlichAndreas/AbstractCms/Adapter/Pdo/Mysql.php';
-
 /**
  *
  * @author Ehrlich, Andreas <ehrlich.andreas@googlemail.com>
@@ -81,6 +79,7 @@ class EhrlichAndreas_VersioningCms_Adapter_Pdo_Mysql extends EhrlichAndreas_Abst
         $query[] = '`published` DATETIME NOT NULL DEFAULT \'0001-01-01 00:00:00\', ';
         $query[] = '`updated` DATETIME NOT NULL DEFAULT \'0001-01-01 00:00:00\', ';
         $query[] = '`enabled` INT(5) NOT NULL DEFAULT \'0\', ';
+        $query[] = '`extern_id` varchar(255) NOT NULL, ';
         $query[] = '`key` varchar(255) NOT NULL, ';
         $query[] = '`value` TEXT NOT NULL, ';
         $query[] = '`diff` TEXT NOT NULL, ';

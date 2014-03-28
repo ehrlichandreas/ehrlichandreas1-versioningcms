@@ -1,6 +1,4 @@
-<?php
-
-//require_once 'EhrlichAndreas/AbstractCms/Exception.php';
+<?php 
 
 /**
  * Library base exception
