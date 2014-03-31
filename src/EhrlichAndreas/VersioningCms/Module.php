@@ -76,6 +76,7 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
             'value'         => 'value',
             'diff'          => 'diff',
             'version'       => 'version',
+            'version_prev'  => 'version_prev',
             'active'        => 'active',
 		);
     }
@@ -143,6 +144,11 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
         if (! isset($params['version']))
         {
             $params['version'] = '0';
+        }
+        
+        if (! isset($params['version_prev']))
+        {
+            $params['version_prev'] = '0';
         }
         
         if (! isset($params['active']))
@@ -213,6 +219,11 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
         if (! isset($params['version']))
         {
             $params['version'] = '0';
+        }
+        
+        if (! isset($params['version_prev']))
+        {
+            $params['version_prev'] = '0';
         }
         
         if (! isset($params['active']))
