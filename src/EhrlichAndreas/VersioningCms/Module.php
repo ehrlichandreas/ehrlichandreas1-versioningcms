@@ -19,7 +19,7 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
      * 
      * @param array $options
      *            Associative array of options
-     * @throws MiniPhp_CmsModule_Exception
+     * @throws EhrlichAndreas_VersioningCms_Exception
      * @return void
      */
     public function __construct ($options = array())
@@ -41,7 +41,7 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
     
     /**
      * 
-     * @return \MiniPhp_NewsletterCms_Module
+     * @return \EhrlichAndreas_VersioningCms_Module
      */
     public function install()
     {

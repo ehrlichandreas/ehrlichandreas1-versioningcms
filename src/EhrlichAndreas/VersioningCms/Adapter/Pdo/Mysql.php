@@ -21,7 +21,7 @@ class EhrlichAndreas_VersioningCms_Adapter_Pdo_Mysql extends EhrlichAndreas_Abst
 	
     /**
      * 
-     * @return \MiniPhp_NewsletterCms_Adapter_Pdo_Mysql
+     * @return \EhrlichAndreas_VersioningCms_Adapter_Pdo_Mysql
      */
 	public function install ()
     {
@@ -32,7 +32,7 @@ class EhrlichAndreas_VersioningCms_Adapter_Pdo_Mysql extends EhrlichAndreas_Abst
 	
 	/**
 	 * 
-	 * @return GoldAg_LottoCms_Adapter_Pdo_Mysql
+	 * @return EhrlichAndreas_VersioningCms_Adapter_Pdo_Mysql
 	 */
 	protected function _install_version_10000 ()
 	{
