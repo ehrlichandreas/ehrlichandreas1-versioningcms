@@ -86,8 +86,9 @@ class EhrlichAndreas_VersioningCms_Adapter_Pdo_Mysql extends EhrlichAndreas_Abst
         $query[] = '`version` BIGINT(19) unsigned NOT NULL DEFAULT \'0\', ';
         $query[] = '`version_prev` BIGINT(19) unsigned NOT NULL DEFAULT \'0\', ';
         $query[] = '`active` INT(5) NOT NULL DEFAULT \'0\', ';
-        $query[] = 'PRIMARY KEY (`﻿versioning_id`), ';
-        $query[] = 'KEY `idx_key_version` (`key` (230), `version` (19)) ';
+        $query[] = 'PRIMARY KEY (`versioning_id`), ';
+        $query[] = 'KEY `idx_key_version` (`key` (230), `version` (19)), ';
+        $query[] = 'KEY `idx_extern_id_key_version` (`extern_id` (100), `key` (100), `version` (19)) ';
         $query[] = ') ';
         $query[] = 'ENGINE = InnoDB ';
         $query[] = 'DEFAULT CHARACTER SET = utf8 ';
