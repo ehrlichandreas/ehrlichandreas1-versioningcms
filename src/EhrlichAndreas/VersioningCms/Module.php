@@ -156,6 +156,14 @@ class EhrlichAndreas_VersioningCms_Module extends EhrlichAndreas_AbstractCms_Mod
             $params['active'] = '0';
         }
         
+        if (isset($params['extern_id']))
+        {
+            if (is_array($params['extern_id']))
+            {
+                $params['extern_id'] = implode('::', $params['extern_id']);
+            }
+        }
+        
         if (isset($params['key']))
         {
             if (is_array($params['key']))
