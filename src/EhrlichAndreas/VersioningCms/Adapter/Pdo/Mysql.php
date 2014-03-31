@@ -75,7 +75,7 @@ class EhrlichAndreas_VersioningCms_Adapter_Pdo_Mysql extends EhrlichAndreas_Abst
 
         $query[] = 'CREATE TABLE IF NOT EXISTS `%table%` ';
         $query[] = '( ';
-        $query[] = '`﻿versioning_id` BIGINT(19) unsigned NOT NULL AUTO_INCREMENT, ';
+        $query[] = '`versioning_id` BIGINT(19) unsigned NOT NULL AUTO_INCREMENT, ';
         $query[] = '`published` DATETIME NOT NULL DEFAULT \'0001-01-01 00:00:00\', ';
         $query[] = '`updated` DATETIME NOT NULL DEFAULT \'0001-01-01 00:00:00\', ';
         $query[] = '`enabled` INT(5) NOT NULL DEFAULT \'0\', ';
